@@ -9,10 +9,11 @@ const LaunchesComponents = () => {
     }, []);
     return (
         <div>
-            {launches.map(launch => { if (launch_year !== '2020') {
-                <LaunchComponent key={launch.mission_name} launch={launch}/>
+            {launches.map(launch => {
+                if (launch.launch_year !== '2020') {
+                return <LaunchComponent key={launch.mission_name} launch={launch}/>
             } else {
-
+                return null;
             }
             })}
         </div>
