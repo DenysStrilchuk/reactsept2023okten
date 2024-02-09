@@ -1,6 +1,7 @@
+import {useEffect, useState} from "react";
+
 import {CommentForm} from "./CommentForm";
 import {Comments} from "./Comments";
-import {useEffect, useState} from "react";
 import {commentsService} from "../../services/commentsService";
 
 const CommentsContainer = () => {
@@ -11,7 +12,7 @@ const CommentsContainer = () => {
     }, []);
     return (
         <div>
-            <CommentForm/>
+            <CommentForm setComments={setComments}/>
             <hr/>
             <Comments comments={comments}/>
         </div>

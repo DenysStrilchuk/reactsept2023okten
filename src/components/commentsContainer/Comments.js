@@ -1,6 +1,3 @@
-import {useEffect, useState} from "react";
-
-import {commentsService} from "../../services/commentsService";
 import {Comment} from "./Comment";
 
 const Comments = ({comments}) => {
