@@ -1,5 +1,5 @@
 import {apiService} from "./apiService";
-import {urls} from "../components/constants/urls";
+import {urls} from "../constants/urls";
 
 const userService = {
     getAll:() => apiService.get(urls.users),
