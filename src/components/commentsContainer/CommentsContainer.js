@@ -1,7 +1,12 @@
+import {CommentForm} from "./CommentForm";
+import {Comments} from "./Comments";
+
 const CommentsContainer = () => {
     return (
         <div>
-            CommentsContainer
+            <CommentForm/>
+            <hr/>
+            <Comments comments={comments}/>
         </div>
     );
 };
