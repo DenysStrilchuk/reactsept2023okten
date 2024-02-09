@@ -1,4 +1,4 @@
-const Car = ({car}) => {
+const Car = ({car, setCarForUpdate, setCarForDelete}) => {
     const {id, brand, price, year} = car;
     return (
         <div>
@@ -6,9 +6,8 @@ const Car = ({car}) => {
             <div>brand: {brand}</div>
             <div>price: {price}</div>
             <div>year: {year}</div>
-            <button>create</button>
-            <button>delete</button>
-            <button>update</button>
+            <button onClick={()=>setCarForUpdate(car)}>update</button>
+            <button onClick={()=>setCarForDelete(car)}>delete</button>
             <hr/>
         </div>
     );
