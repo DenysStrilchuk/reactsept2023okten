@@ -6,6 +6,7 @@ const UsersForm = ({setUsers}) => {
 
     const save  = (user) => {
         userService.create(user).then(({data}) => setUsers(prev => [...prev, data]));
+        reset();
     }
 
     return (
