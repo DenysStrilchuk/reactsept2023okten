@@ -4,8 +4,8 @@ import {userService} from "../../services/userService";
 const UsersForm = ({setUsers}) => {
     const {reset, register, handleSubmit} = useForm();
 
-    const save  = (user) => {
-        userService.create(user).then(({data}) => setUsers(prev => [...prev, data]));
+    const save  = async (user) => {
+        await userService.create(user).then(({data}) => setUsers(prev => [...prev, data]));
         reset();
     }
 
