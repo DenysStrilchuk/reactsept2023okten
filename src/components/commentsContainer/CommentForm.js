@@ -5,8 +5,8 @@ import {commentsService} from "../../services/commentsService";
 
 const CommentForm = ({setComments}) => {
 const {reset, register, handleSubmit} = useForm();
-const save = (comment)  => {
-    commentsService.create(comment).then(({data}) => setComments(prev => [...prev,  data]));
+const save = async (comment)  => {
+    await commentsService.create(comment).then(({data}) => setComments(prev => [...prev,  data]));
     reset();
     }
     return (
