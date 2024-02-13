@@ -1,11 +1,12 @@
 import {Outlet} from "react-router-dom";
 
 import {Comments} from "../components/CommentsContainer/Comments";
+import css from '../components/Main/CommentsPage.module.css'
 
 
 const CommentsPage = () => {
     return (
-        <div>
+        <div className={css.Comments}>
             <Comments/>
             <Outlet/>
         </div>
