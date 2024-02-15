@@ -1,7 +1,7 @@
 import {Outlet} from "react-router-dom";
 import {Posts} from "../components/PostsContainer/Posts";
 
-const UserPostsPage = () => {
+const UserPostsTitlePage = () => {
     return (
         <div>
             <Posts/>
@@ -10,4 +10,4 @@ const UserPostsPage = () => {
     );
 };
 
-export {UserPostsPage};
+export {UserPostsTitlePage};

@@ -6,7 +6,7 @@ const User = ({user}) => {
     return (
         <div>
             <div>{id} - {name}</div>
-            <button onClick={() => navigate('user', {state:{id:id}})}>user details</button>
+            <button onClick={() => navigate('/userDetails', {state:{id:id}})}>user details</button>
         </div>
     );
 };
