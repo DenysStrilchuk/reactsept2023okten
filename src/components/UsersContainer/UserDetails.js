@@ -6,7 +6,6 @@ const UserDetails = ({userDetails}) => {
     const navigate = useNavigate();
     return (
         <div>
-            <div>{id}</div>
             <div>username: {username}</div>
             <div>email: {email}</div>
             <div>address:</div>
@@ -16,7 +15,7 @@ const UserDetails = ({userDetails}) => {
             <div>zipcode: {zipcode}</div>
             <div>phone: {phone}</div>
             <div>website: {website}</div>
-            <button onClick={() => navigate('postsTitle', {state:{userId:id}})}>post of current user</button>
+            <button onClick={() => navigate(`postsTitle`, {state:{id:id}})}>post of current user</button>
         </div>
     );
 };

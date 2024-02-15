@@ -1,21 +1,19 @@
-import {useLocation} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {postsService} from "../../services/postsService";
 import {Post} from "./Post";
 
 const Posts = () => {
-    const {state:{id}} = useLocation();
-
-    const [post, setPosts] = useState(null);
+    const [posts, setPosts] = useState([]);
 
     useEffect(() => {
-        postsService.getBuId(id).then(({data}) => setPosts(data))
-    }, [id]);
+        postsService.getAll().then(({data}) => setPosts(data))
+    }, []);
     return (
         <div>
-            {post && <Post post={post}/>}
+            {posts.map(post => <Post key={post.key} post={post}/>)}
         </div>
     );
 };
 
 export {Posts};
+
