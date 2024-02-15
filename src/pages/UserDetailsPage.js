@@ -1,13 +1,11 @@
 import {Outlet, useLocation} from "react-router-dom";
-import {UserDetails} from "../components/UsersContainer/UserDetails";
+
+import {UsersDetails} from "../components/UsersContainer/UsersDetails";
 
 const UserDetailsPage = () => {
-    const {state:{id}} = useLocation();
-
-
     return (
         <div>
-            <UserDetails/>
+            <UsersDetails/>
             <Outlet/>
         </div>
     );
