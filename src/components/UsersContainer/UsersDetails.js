@@ -10,7 +10,7 @@ const UsersDetails = () => {
 
     useEffect(() => {
         usersService.getById(id).then(({data}) => setUsersDetails(data))
-    }, []);
+    }, [id]);
     return (
         <div>
             {userDetails && <UserDetails userDetails={userDetails}/>}
