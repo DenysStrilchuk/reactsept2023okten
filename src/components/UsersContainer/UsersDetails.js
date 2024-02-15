@@ -13,7 +13,7 @@ const UsersDetails = () => {
     }, []);
     return (
         <div>
-            {userDetails && <UserDetails/>}
+            {userDetails && <UserDetails userDetails={userDetails}/>}
         </div>
     );
 };
