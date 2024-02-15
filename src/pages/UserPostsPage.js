@@ -1,7 +1,11 @@
+import {Outlet} from "react-router-dom";
+import {Posts} from "../components/PostsContainer/Posts";
+
 const UserPostsPage = () => {
     return (
         <div>
-            UserPostsPage
+            <Posts/>
+            <Outlet/>
         </div>
     );
 };
