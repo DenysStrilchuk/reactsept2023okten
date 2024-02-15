@@ -2,12 +2,12 @@ import {useEffect, useState} from "react";
 import {postsService} from "../../services/postsService";
 import {Post} from "./Post";
 
-const Posts = () => {
-    const [posts, setPosts] = useState([]);
+const Posts = ({userId}) => {
+    const [posts, setPosts] = useState([])
 
     useEffect(() => {
-        postsService.getAll().then(({data}) => setPosts(data))
-    }, []);
+        postsService.getByUserId(userId).then(({data}) => setPosts(data))
+    }, [userId]);
     return (
         <div>
             {posts.map(post => <Post key={post.id} post={post}/>)}
@@ -16,4 +16,3 @@ const Posts = () => {
 };
 
 export {Posts};
-

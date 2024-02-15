@@ -4,9 +4,8 @@ import {MainLayout} from "./layouts/MainLayout";
 import {ErrorPage} from "./pages/ErrorPage";
 import {UsersPage} from "./pages/UsersPage";
 import {UserDetailsPage} from "./pages/UserDetailsPage";
-import {UserPostsTitlePage} from "./pages/UserPostsTitlePage";
 import {PostDetailsPage} from "./pages/PostDetailsPage";
-import {CommentsPage} from "./pages/CommentsPage";
+import {PostsPage} from "./pages/PostsPage";
 
 const router = createBrowserRouter([
     {
@@ -18,17 +17,14 @@ const router = createBrowserRouter([
                 path: 'users', element: <UsersPage/>
             },
             {
-                path: 'userDetails', element: <UserDetailsPage/>, children: [
+                path: 'users/:id', element: <UserDetailsPage/>, children: [
                     {
-                        path: 'postsTitle', element: <UserPostsTitlePage/>
+                        path: 'posts', element: <PostsPage/>
                     }
                 ]
             },
             {
-                path: 'postDetails', element: <PostDetailsPage/>
-            },
-            {
-                path:'comments', element:<CommentsPage/>
+                path: 'post/:id', element: <PostDetailsPage/>
             }
         ]
     }
