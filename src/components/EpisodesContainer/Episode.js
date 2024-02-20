@@ -1,8 +1,10 @@
 const Episode = ({episode}) => {
-const {name} = episode;
+const {id, name, chapter} = episode;
     return (
         <div>
-            <div>{name}</div>
+            <div>id: {id}</div>
+            <div>name: {name}</div>
+            <div>chapter: {chapter}</div>
         </div>
     );
 };

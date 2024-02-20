@@ -1,39 +1,38 @@
-import {useEffect, useState} from "react";
-import {episodeService} from "../../services";
+import React, { useEffect, useState } from 'react';
+import { episodeService } from '../../services';
 import {Episode} from "./Episode";
-import {useSearchParams} from "react-router-dom";
 
 const Episodes = () => {
     const [episodes, setEpisodes] = useState([]);
-    const [query, setQuery] = useSearchParams({page:'1'});
-    const [prevNext, setPrevNext] = useState({prev: null, next: null});
+    const [info, setInfo] = useState({});
+    const [page, setPage] = useState(1);
 
     useEffect(() => {
-        episodeService.getAll(query.get('page')).then(({data}) => {
-            setEpisodes(data.items)
-            setPrevNext({prev: data.prev, next: data.next})
-        });
+        const fetchData = async () => {
+            const response = await episodeService.getAll(page);
+            setEpisodes(response.data.results);
+            setInfo(response.data.info);
+        };
+        fetchData();
+    }, [page]);
 
-    }, [query.get('page')]);
+    const prevPage = () => {
+        setPage(page - 1);
+    };
 
-    const prev = () => {
-        setQuery(prev => {
-            prev.set('page', (+prev.get('page') - 1).toString())
-            return prev
-        })
-    }
+    const nextPage = () => {
+        setPage(page + 1);
+    };
 
-    const next = () => {
-        prev.set('page', (+prev.get('page') + 1).toString())
-        return prev
-    }
     return (
         <div>
-            {episodes && episodes.map(episode => <Episode key={episode.id} episode={episode}/>)}
-            <button disabled={!prevNext.prev} onClick={prev}>prev</button>
-            <button disabled={!prevNext.next} onClick={next}>next</button>
+                {episodes && episodes.map(episode => <Episode key={episode.id} episode={episode}/>)}
+            <div>
+                <button onClick={prevPage} disabled={page === 1}>Previous</button>
+                <button onClick={nextPage} disabled={page === info.pages}>Next</button>
+            </div>
         </div>
     );
 };
 
-export {Episodes};
+export {Episodes}
