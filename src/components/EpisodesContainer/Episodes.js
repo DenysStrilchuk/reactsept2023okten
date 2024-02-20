@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { episodeService } from '../../services';
 import {useSearchParams} from "react-router-dom";
 import {Episode} from "./Episode";
+import css from "../MainContainer/Main.module.css";
 
 const Episodes = () => {
     const [episodes, setEpisodes] = useState([]);
@@ -31,7 +32,7 @@ const Episodes = () => {
     }
 
     return (
-        <div>
+        <div className={css.Table}>
             {episodes.map(episode => <Episode key={episode.id} episode={episode}/>)}
             <div>
                 <button onClick={prevPage} disabled={!prevNext.prev}>Previous</button>
