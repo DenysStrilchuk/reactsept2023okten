@@ -1,5 +1,5 @@
 const Episode = ({episode}) => {
-const {id, name, chapter} = episode;
+const {id, name, episode:chapter} = episode;
     return (
         <div>
             <div>id: {id}</div>
