@@ -16,3 +16,11 @@
     display: flex;
     justify-content: space-between;
 }
+.TableText a {
+    text-decoration: none;
+    color: black;
+}
+.TableText a:hover {
+    text-decoration: underline;
+    color: darkcyan;
+}
