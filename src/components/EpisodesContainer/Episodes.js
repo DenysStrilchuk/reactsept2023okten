@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { episodeService } from '../../services';
 import {useSearchParams} from "react-router-dom";
+import {Episode} from "./Episode";
 
 const Episodes = () => {
     const [episodes, setEpisodes] = useState([]);
@@ -31,13 +32,7 @@ const Episodes = () => {
 
     return (
         <div>
-            {episodes.map(episode => (
-                <div key={episode.id}>
-                    <h3>{episode.name}</h3>
-                    <p>Episode: {episode.episode}</p>
-                    <p>Air date: {episode.air_date}</p>
-                </div>
-            ))}
+            {episodes.map(episode => <Episode key={episode.id} episode={episode}/>)}
             <div>
                 <button onClick={prevPage} disabled={!prevNext.prev}>Previous</button>
                 <button onClick={nextPage} disabled={!prevNext.next}>Next</button>
