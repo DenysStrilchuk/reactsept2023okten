@@ -32,9 +32,11 @@ const Episodes = () => {
     }
 
     return (
-        <div className={css.Table}>
-            {episodes.map(episode => <Episode key={episode.id} episode={episode}/>)}
-            <div>
+        <div>
+             <div className={css.Table}>
+                 {episodes.map(episode => <Episode key={episode.id} episode={episode}/>)}
+             </div>
+            <div className={css.Buttons}>
                 <button onClick={prevPage} disabled={!prevNext.prev}>Previous</button>
                 <button onClick={nextPage} disabled={!prevNext.next}>Next</button>
             </div>
