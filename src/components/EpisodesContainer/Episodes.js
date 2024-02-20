@@ -1,35 +1,46 @@
 import React, { useEffect, useState } from 'react';
 import { episodeService } from '../../services';
-import {Episode} from "./Episode";
+import {useSearchParams} from "react-router-dom";
 
 const Episodes = () => {
     const [episodes, setEpisodes] = useState([]);
-    const [info, setInfo] = useState({});
-    const [page, setPage] = useState(1);
+    const [prevNext, setPrevNext] = useState({prev: null, next: null});
+    const [query, setQuery] = useSearchParams({page: '1'});
 
     useEffect(() => {
-        const fetchData = async () => {
-            const response = await episodeService.getAll(page);
-            setEpisodes(response.data.results);
-            setInfo(response.data.info);
-        };
-        fetchData();
-    }, [page]);
+        episodeService.getAll(query.get('page'))
+            .then(({ data }) => {
+                setEpisodes(data.results);
+                setPrevNext({prev: data.info.prev, next: data.info.next});
+            });
+    }, [query]);
 
     const prevPage = () => {
-        setPage(page - 1);
-    };
+        setQuery(prev => {
+            prev.set('page', (+prev.get('page') - 1).toString())
+            return prev
+        })
+    }
 
     const nextPage = () => {
-        setPage(page + 1);
-    };
+        setQuery(prev => {
+            prev.set('page', (+prev.get('page') + 1).toString())
+            return prev
+        })
+    }
 
     return (
         <div>
-                {episodes && episodes.map(episode => <Episode key={episode.id} episode={episode}/>)}
+            {episodes.map(episode => (
+                <div key={episode.id}>
+                    <h3>{episode.name}</h3>
+                    <p>Episode: {episode.episode}</p>
+                    <p>Air date: {episode.air_date}</p>
+                </div>
+            ))}
             <div>
-                <button onClick={prevPage} disabled={page === 1}>Previous</button>
-                <button onClick={nextPage} disabled={page === info.pages}>Next</button>
+                <button onClick={prevPage} disabled={!prevNext.prev}>Previous</button>
+                <button onClick={nextPage} disabled={!prevNext.next}>Next</button>
             </div>
         </div>
     );

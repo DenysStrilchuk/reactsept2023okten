@@ -1,7 +1,6 @@
 .Main{
     display: flex;
     flex-direction: row;
-    background-color: chocolate;
 }
 .Table {
     display: flex;
@@ -10,12 +9,10 @@
     align-items: center;
     border: 1px solid black;
     width: 500px;
-    height:200px;
 }
 .TableText {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: chocolate;
 }
