@@ -1,6 +1,7 @@
 import {apiService} from "./apiService";
-import {urls} from "../constants";
-import {baseURL} from "../constants/urls"
+import {baseURL, urls} from "../constants";
+
+
 
 const characterService = {
     getAll: () => apiService.get(urls.characters.base),
