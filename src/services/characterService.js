@@ -9,7 +9,7 @@ const characterService = {
         const characterUrls = response.data.characters;
         const characterRequests = characterUrls.map(characterUrl => apiService.get(characterUrl));
         const charactersResponses = await Promise.all(characterRequests);
-        return charactersResponses.filter(res => res.data).map(res => res.data);
+        return charactersResponses.map(res => res.data);
     }
 }
 
