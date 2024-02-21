@@ -7,7 +7,7 @@ const {id, name, episode:chapter} = episode;
         <div className={css.TableText}>
                 <div>id:{id}</div>
                 <div>name: {name}</div>
-                <NavLink to={'/characters'}>chapter: {chapter}</NavLink>
+                <NavLink to={`/characters/${id}`}>chapter: {chapter}</NavLink>
         </div>
     );
 };

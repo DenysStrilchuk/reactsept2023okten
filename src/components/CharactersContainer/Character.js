@@ -1,7 +1,8 @@
-const Character = () => {
+const Character = ({character}) => {
+    const {id} = character;
     return (
         <div>
-            Character
+            {id}
         </div>
     );
 };
