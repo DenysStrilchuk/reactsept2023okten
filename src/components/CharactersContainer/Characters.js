@@ -1,9 +1,8 @@
-// CharactersPage.js
-
 import { useEffect, useState } from 'react';
 import {useLocation, useNavigate} from 'react-router-dom';
-import { characterService } from '../../services';
+
 import {Character} from "./Character";
+import {characterService} from "../../services";
 
 const Characters = () => {
     const [characters, setCharacters] = useState([]);
@@ -12,21 +11,20 @@ const Characters = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        const fetchData = async () => {
-            const response = await characterService.getByEpisodeId(episodeId);
-            setCharacters(response);
-        };
         if (episodeId) {
-            fetchData();
+            (async () => {
+                const response = await characterService.getByEpisodeId(episodeId);
+                setCharacters(response);
+            })();
         }
     }, [episodeId]);
 
     return (
         <div>
             <button onClick={() => navigate(-1)}>back</button>
-            {characters.map(character => <Character key={character.id} character={character}/>)}
+            {characters.map(character => <Character key={character.id} character={character} />)}
         </div>
     );
 };
 
-export {Characters};
+export { Characters };
