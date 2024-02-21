@@ -1,8 +1,12 @@
 const Character = ({character}) => {
-    const {id} = character;
+        const {id, name, image} = character;
     return (
         <div>
-            {id}
+            <button>back</button>
+            <div>id: {id}</div>
+            <div>name: {name}</div>
+            <img src={image} alt={name}/>
+            <hr/>
         </div>
     );
 };
