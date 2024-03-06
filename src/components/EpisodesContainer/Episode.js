@@ -1,5 +1,6 @@
-import css from "../MainContainer/Main.module.css"
 import {NavLink} from "react-router-dom";
+
+import css from "../MainContainer/Main.module.css"
 
 const Episode = ({episode}) => {
 const {id, name, episode:chapter} = episode;

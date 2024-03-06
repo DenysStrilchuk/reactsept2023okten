@@ -1,42 +1,25 @@
 import React, { useEffect, useState } from 'react';
-import { episodeService } from '../../services';
 import {useSearchParams} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+
+import { episodeService } from '../../services';
 import {Episode} from "./Episode";
-import css from "../MainContainer/Main.module.css";
+import {episodesActions} from "../../store";
 
 const Episodes = () => {
-    const [episodes, setEpisodes] = useState([]);
-    const [prevNext, setPrevNext] = useState({prev: null, next: null});
     const [query, setQuery] = useSearchParams({page: '1'});
+    const dispatch = useDispatch();
+    const {episodes} = useSelector(state => state.episodes)
     const page  = query.get('page');
 
     useEffect(() => {
-        episodeService.getAll(page).then(({data}) => )
+        episodeService.getAll(page).then(({data}) => dispatch(episodesActions.setResponse(data)))
     }, [page]);
 
-    const prevPage = () => {
-        setQuery(prev => {
-            prev.set('page', (+prev.get('page') - 1).toString())
-            return prev
-        })
-    }
-
-    const nextPage = () => {
-        setQuery(prev => {
-            prev.set('page', (+prev.get('page') + 1).toString())
-            return prev
-        })
-    }
 
     return (
         <div>
-             <div className={css.Table}>
-                 {episodes.map(episode => <Episode key={episode.id} episode={episode}/>)}
-             </div>
-            <div className={css.Buttons}>
-                <button onClick={prevPage} disabled={!prevNext.prev}>Previous</button>
-                <button onClick={nextPage} disabled={!prevNext.next}>Next</button>
-            </div>
+             {episodes.map(episode => <Episode key={episode.id} episode={episode}/>)}
         </div>
     );
 };
