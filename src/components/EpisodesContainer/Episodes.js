@@ -8,14 +8,11 @@ const Episodes = () => {
     const [episodes, setEpisodes] = useState([]);
     const [prevNext, setPrevNext] = useState({prev: null, next: null});
     const [query, setQuery] = useSearchParams({page: '1'});
+    const page  = query.get('page');
 
     useEffect(() => {
-        episodeService.getAll(query.get('page'))
-            .then(({ data }) => {
-                setEpisodes(data.results);
-                setPrevNext({prev: data.info.prev, next: data.info.next});
-            });
-    }, [query]);
+        episodeService.getAll(page).then(({data}) => )
+    }, [page]);
 
     const prevPage = () => {
         setQuery(prev => {
