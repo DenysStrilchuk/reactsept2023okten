@@ -1,29 +1,27 @@
-import {useNavigate, useParams} from "react-router-dom";
-import {useEffect, useState} from "react";
-import {characterService} from "../../services";
-import {Character} from "./Character";
-
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { characterService } from "../../services";
+import { Character } from "./Character";
+import { charactersActions } from "../../store/slices/charactersSlice";
 
 const Characters = () => {
-    const [characters, setCharacters] = useState([]);
-    const {id} = useParams();
-    const navigate = useNavigate();
-
+    const dispatch = useDispatch();
+    const {characters} = useSelector(state => state.characters);
+    const { id } = useParams();
 
     useEffect(() => {
-        characterService.getById(id).then(({data}) => setCharacters(data));
-    }, [id]);
+        characterService.getById(id).then(({ data }) => {
+            dispatch(charactersActions.setResponse({ results: data }));
+        });
+    }, [id, dispatch]);
 
-    const back = () => {
-        navigate(-1);
-    }
 
     return (
         <div>
-            <button onClick={back}>back</button>
-            {characters.map(character => <Character key={character.id} character={character}/>)}
+            {characters.map(character => <Character key={character.id} character={character} />)}
         </div>
     );
 };
 
-export {Characters};
+export { Characters };
