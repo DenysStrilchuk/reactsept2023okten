@@ -3,9 +3,9 @@ import {useSearchParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 
 import { episodeService } from '../../../services';
-import {Episode} from "../Episode/Episode";
 import {episodesActions} from "../../../store";
 import css from "./Episodes.module.css";
+import {Episode} from "../Episode";
 
 const Episodes = () => {
     const [query, ] = useSearchParams({page: '1'});
