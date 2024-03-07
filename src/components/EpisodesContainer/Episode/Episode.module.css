@@ -1,0 +1,15 @@
+.EpisodeTableText {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    height: 80px;
+    width: 20%;
+}
+
+.EpisodeTableText:hover {
+    background-color: gray;
+    color: snow;
+    cursor: pointer;
+}

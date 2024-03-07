@@ -5,6 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 import { episodeService } from '../../../services';
 import {Episode} from "../Episode/Episode";
 import {episodesActions} from "../../../store";
+import css from "./Episodes.module.css";
 
 const Episodes = () => {
     const [query, ] = useSearchParams({page: '1'});
@@ -18,7 +19,7 @@ const Episodes = () => {
 
 
     return (
-        <div>
+        <div className={css.EpisodesTable}>
              {episodes.map(episode => <Episode key={episode.id} episode={episode}/>)}
         </div>
     );
