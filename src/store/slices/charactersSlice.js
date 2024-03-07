@@ -16,8 +16,11 @@ const charactersSlice = createSlice({
 });
 
 const { reducer: charactersReducer, actions } = charactersSlice;
+const charactersActions = {
+    ...actions
+}
 
 export {
     charactersReducer,
-    actions as charactersActions
+    charactersActions
 };

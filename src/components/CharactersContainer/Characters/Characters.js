@@ -1,9 +1,11 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { characterService } from "../../services";
-import { Character } from "./Character";
-import { charactersActions } from "../../store/slices/charactersSlice";
+
+import { characterService } from "../../../services";
+import {charactersActions} from "../../../store";
+import {Character} from "../Character";
+
 
 const Characters = () => {
     const dispatch = useDispatch();
