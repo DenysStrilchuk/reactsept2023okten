@@ -1,8 +1,15 @@
-import { createSlice } from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
     characters: []
 };
+
+const byId = createAsyncThunk(
+    'charactersSlice/byId',
+    async (_,thunkAPI) => {
+
+    }
+)
 
 const charactersSlice = createSlice({
     name: 'charactersSlice',
