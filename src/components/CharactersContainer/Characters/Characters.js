@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
-import { characterService } from "../../../services";
 import {charactersActions} from "../../../store";
 import {Character} from "../Character";
 
@@ -13,9 +12,7 @@ const Characters = () => {
     const { id } = useParams();
 
     useEffect(() => {
-        characterService.getById(id).then(({ data }) => {
-            dispatch(charactersActions.setResponse({ results: data }));
-        });
+        dispatch(charactersActions.getById({id}))
     }, [id, dispatch]);
 
 
